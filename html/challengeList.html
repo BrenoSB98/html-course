@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested List</title>
+  <link rel="stylesheet" href="../css/challengeList.css">
+</head>
+
+<body>
+  <h1>Nested List Project</h1>
+  <nav>
+    <a href="../index.html">Home Page</a>
+  </nav>
+  <ul class="tree">
+    <li>
+      <span nl-folder>back-end</span>
+      <ul>
+        <li>
+          <span nl-folder>app</span>
+          <ul>
+            <li>product.js</li>
+            <li>user.js</li>
+            <li>sale.js</li>
+          </ul>
+        </li>
+        <li>
+          <span nl-folder>config</span>
+          <ul>
+            <li>database.js</li>
+            <li>express.js</li>
+            <li>routes.js</li>
+            <li>server.js</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span nl-folder>front-end</span>
+      <ul>
+        <li>
+          <span nl-folder>public</span>
+          <ul>
+            <li>app.css</li>
+            <li>app.js</li>
+            <li>index.html</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <a href="../html/links.html">Links</a>
+</body>
+<script>
+  document.querySelectorAll('[nl-folder]').forEach(folder => {
+    folder.onclick = function (e) {
+      const ul = folder.nextElementSibling
+      const d = ul.style.display
+      ul.style.display = d === 'none' ? 'block' : 'none'
+    }
+  })
+</script>
+
+</html>

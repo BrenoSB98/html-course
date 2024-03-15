@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Home Page HTML Course</title>
+</head>
+
+<body>
+  <header>
+    <h1><a class="logo" href="./index.html">Home Page HTML Course</a></h1>
+  </header>
+  <nav>
+    <a href nl-nav="/html/challengeList.html">Challenge about List</a> |
+    <a href nl-nav="/html/links.html">Links</a> |
+    <a href nl-nav="/html/table.html">Tables</a> |
+    <a href nl-nav="/server/form.html">Form</a> |
+    <a href nl-nav="/html/images.html">Images</a> |
+    <a href nl-nav="/html/video.html">Video</a>
+  </nav>
+  <section id="content"></section>
+  <script>
+    document.querySelectorAll('[nl-nav]').forEach(link => {
+      const content = document.getElementById('content')
+
+      link.onclick = function (e) {
+        e.preventDefault()
+        fetch(link.getAttribute('nl-nav'))
+          .then(resp => resp.text())
+          .then(html => content.innerHTML = html)
+      }
+    })
+  </script>
+</body>
+
+</html>

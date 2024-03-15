@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/video.css">
+  <title>About Video</title>
+</head>
+
+<body>
+  <video id="myVideo" class="video" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    <p>Your browser don't suporte the tag video</p>
+  </video>
+
+  <div nl-progress="myVideo" class="progress">
+    <div></div>
+  </div>
+
+  <div>
+    <button nl-play="myVideo">Play</button>
+    <button nl-pause="myVideo">Pause</button>
+  </div>
+
+  <script>
+    function configVideo(id) {
+      const video = document.getElementById(id)
+      video.oncontextmenu = () => false
+
+      document.querySelector(`[nl-play=${id}]`).onclick = e => video.play()
+      document.querySelector(`[nl-pause=${id}]`).onclick = e => video.pause()
+
+      setInterval(() => {
+        const percent = (video.currentTime / video.duration) * 100
+        const valueDiv = document.querySelector(`[nl-progress=${id}] > div`)
+        valueDiv.style.width = `${percent}%`
+        valueDiv.innerHTML = `${percent.toFixed(1)}%`
+      }, 500)
+    }
+
+    configVideo('myVideo')
+  </script>
+</body>
+
+</html>
